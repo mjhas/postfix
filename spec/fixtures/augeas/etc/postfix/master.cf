@@ -1,0 +1,8 @@
+# ==========================================================================
+# service type  private unpriv  chroot  wakeup  maxproc command + args
+#               (yes)   (yes)   (yes)   (never) (100)
+# ==========================================================================
+smtp      inet  n       -       -       -       -       smtpd
+qmgr      fifo  n       -       n       300     1       qmgr
+virtual   unix  -       n       n       -       -       virtual
+

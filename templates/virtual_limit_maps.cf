@@ -1,0 +1,5 @@
+user = <%= dbuser %>
+password = <%= dbpassword %>
+hosts = <%= hosts %>
+dbname = <%= dbname %>
+query = SELECT quota FROM users WHERE email='%s'

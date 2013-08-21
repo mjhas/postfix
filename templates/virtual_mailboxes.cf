@@ -1,0 +1,5 @@
+user = <%= dbuser %>
+password = <%= dbpassword %>
+hosts = <%= hosts %>
+dbname = <%= dbname %>
+query = SELECT SUBSTRING(email from (position('@' in email)+1) for (char_length(email)-position('@' in email)+1)) || '/' || SUBSTRING(email from 0 for position('@' in email)) FROM users WHERE email='%s'

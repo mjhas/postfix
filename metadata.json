@@ -1,0 +1,13 @@
+{
+  "name": "mjhas-postfix",
+  "version": "0.0.1",
+  "summary": "",
+  "author": "mjhas",
+  "description": "This Postfix Module installs postfix and configures it using Augeas",
+  "dependencies": [],
+  "types": [],
+  "checksums": {},
+  "source": "https://github.com/mjhas/postfix.git",
+  "project_page": "https://github.com/mjhas/postfix",
+  "license": "Apache License 2.0"
+}
