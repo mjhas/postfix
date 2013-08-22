@@ -59,7 +59,7 @@ class postfix::config (
   $dovecot_destination_recipient_limit  = undef,
   $luser_relay                          = undef,
 ) {
-  Class['postfix'] -> Class['postfix::config']
+  include postfix
 
   postfix::config::maincfhelper { 'luser_relay': value => $luser_relay, }
 

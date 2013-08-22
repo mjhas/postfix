@@ -4,6 +4,8 @@ class postfix::postgres (
   $dbpassword = undef, 
   $hosts      = 'localhost',
 ) {
+  include postfix 
+  
   package { 'postfix-pgsql':
     ensure => 'installed',
     notify => Class['postfix'],

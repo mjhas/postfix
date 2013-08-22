@@ -3,6 +3,8 @@ class postfix::relay (
   $masquerade_domains, 
   $sender_hostname = $::fqdn, 
 ) {
+  include postfix
+  
   postfix::config::maincfhelper { 'append_dot_mydomain': value => 'yes', }
 
   postfix::config::maincfhelper { 'myhostname': value => "$sender_hostname", }
