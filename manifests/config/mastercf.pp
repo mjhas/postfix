@@ -30,6 +30,9 @@ define postfix::config::mastercf (
     absent  : {
       augeas { "postfix master.cf ${name}": changes => "rm $name", }
     }
+    default : {
+      notice('unknown ensure value use absent or present')
+    }
   }
 }
 
