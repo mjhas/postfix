@@ -1,5 +1,7 @@
 # postfix #
 
+master branch: [![Build Status](https://secure.travis-ci.org/mjhas/postfix?branch=master)](http://travis-ci.org/mjhas/postfix)
+
 This is the postfix module. It provides way to install postfix using Puppet.
 
 Simplest Configuration:
