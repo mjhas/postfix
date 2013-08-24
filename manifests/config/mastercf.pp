@@ -9,7 +9,7 @@ define postfix::config::mastercf (
   $command      = "echo",) {
   Augeas {
     context => "/files/etc/postfix/master.cf",
-    notify  => Class['postfix'],
+    notify  => Service['postfix'],
   }
 
   case $ensure {
