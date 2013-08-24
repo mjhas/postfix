@@ -16,19 +16,19 @@ define postfix::config::mastercf (
     present : {
       augeas { "postfix master.cf ${name}":
         changes => [
-          "set $name/type $type",
-          "set $name/private $private",
-          "set $name/unprivileged $unprivileged",
-          "set $name/chroot $chroot",
-          "set $name/wakeup $wakeup",
-          "set $name/limit $limit",
-          "set $name/command $command",
+          "set ${name}/type ${type}",
+          "set ${name}/private ${private}",
+          "set ${name}/unprivileged ${unprivileged}",
+          "set ${name}/chroot ${chroot}",
+          "set ${name}/wakeup ${wakeup}",
+          "set ${name}/limit ${limit}",
+          "set ${name}/command ${command}",
           ],
       }
     }
 
     absent  : {
-      augeas { "postfix master.cf ${name}": changes => "rm $name", }
+      augeas { "postfix master.cf ${name}": changes => "rm ${name}", }
     }
     default : {
       notice('unknown ensure value use absent or present')

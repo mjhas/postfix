@@ -13,13 +13,13 @@ define postfix::config::maincf(
         fail("postfix main.cf ${name} value not set")
       }
       augeas { "postfix main.cf ${name}":
-        changes => "set $name '$value'",
+        changes => "set ${name} '${value}'",
       }
     }
 
     absent: {
       augeas { "postfix main.cf ${name}":
-        changes => "rm $name",
+        changes => "rm ${name}",
       }
     }
     default : {
