@@ -4,7 +4,7 @@ install:
   - sudo cp -R $TRAVIS_BUILD_DIR/spec/fixtures/augeas/etc/postfix /etc/
 language: ruby
 bundler_args: --without development
-script: "sudo bash -c \"bundle install && bundle exec rake spec SPEC_OPTS='--format documentation' && puppet apply --modulepath=`dirname $TRAVIS_BUILD_DIR` --noop tests/init.pp\""
+script: "which bundle && sudo -E bash -c \"PATH=$PATH; echo $PATH && bundle install && bundle exec rake spec SPEC_OPTS='--format documentation' && puppet apply --modulepath=`dirname $TRAVIS_BUILD_DIR` --noop tests/init.pp\""
 rvm:
   - 1.8.7
 env:
