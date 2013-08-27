@@ -3,8 +3,9 @@ define postfix::config::maincf(
   $value=undef,
 ) {
   Augeas {
-    context => "/files/etc/postfix/main.cf",
+    context => '/files/etc/postfix/main.cf',
     notify  => Service['postfix'],
+    require => Exec['postfix']
   }
 
   case $ensure {

@@ -1,5 +1,5 @@
-user = <%= dbuser %>
-password = <%= dbpassword %>
-hosts = <%= hosts %>
-dbname = <%= dbname %>
+user = <%= @dbuser %>
+password = <%= @dbpassword %>
+hosts = <%= @hosts %>
+dbname = <%= @dbname %>
 query = SELECT domain FROM domains WHERE domain='%s'

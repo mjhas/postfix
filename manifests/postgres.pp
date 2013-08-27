@@ -7,8 +7,9 @@ class postfix::postgres (
   include postfix
 
   package { 'postfix-pgsql':
-    ensure => 'installed',
-    notify => Class['postfix'],
+    ensure  => 'installed',
+    require => Package['postfix'],
+    notify  => Service['postfix'],
   }
 
   file { '/etc/postfix/postgresql':
@@ -16,6 +17,7 @@ class postfix::postgres (
     mode   => '0750',
     owner  => root,
     group  => postfix,
+    require=> Package['postfix-pgsql'],
   }
 
   file { '/etc/postfix/postgresql/virtual_email2email.cf':
