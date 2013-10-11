@@ -1,3 +1,14 @@
+# == Class: postfix::config
+#
+# postfix class configuration
+#
+# === Parameters
+#
+# === Variables
+#
+# === Authors
+#
+# mjhas@github
 class postfix::config (
   $alias_maps                           = undef,
   $append_dot_mydomain                  = undef,

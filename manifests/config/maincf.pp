@@ -1,6 +1,17 @@
+# == Define: postfix::maincf
+#
+# define to build up main.cf for postfix
+#
+# === Parameters
+#
+# === Variables
+#
+# === Authors
+#
+# mjhas@github
 define postfix::config::maincf(
   $ensure = present,
-  $value=undef,
+  $value  = undef,
 ) {
   Augeas {
     context => '/files/etc/postfix/main.cf',

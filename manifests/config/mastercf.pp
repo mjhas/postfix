@@ -1,14 +1,25 @@
+# == Define: postfix::config::mastercf
+#
+# define to build up master.cf
+#
+# === Parameters
+#
+# === Variables
+#
+# === Authors
+#
+# mjhas@github
 define postfix::config::mastercf (
   $ensure       = present,
-  $type         = "unix",
-  $private      = "-",
-  $unprivileged = "-",
-  $chroot       = "-",
-  $wakeup       = "-",
-  $limit        = "-",
-  $command      = "echo",) {
+  $type         = 'unix',
+  $private      = '-',
+  $unprivileged = '-',
+  $chroot       = '-',
+  $wakeup       = '-',
+  $limit        = '-',
+  $command      = 'echo',) {
   Augeas {
-    context => "/files/etc/postfix/master.cf",
+    context => '/files/etc/postfix/master.cf',
     notify  => Service['postfix'],
     require => Exec['postfix'],
   }
