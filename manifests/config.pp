@@ -59,8 +59,11 @@ class postfix::config (
   $maildrop_destination_recipient_limit = undef,
   $dovecot_destination_recipient_limit  = undef,
   $luser_relay                          = undef,
+  $mastercfs                            = {},
 ) {
   include postfix
+
+  create_resources(postfix::config::mastercf, $mastercfs)
 
   postfix::config::maincfhelper { 'luser_relay': value => $luser_relay, }
 
