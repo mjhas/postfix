@@ -5,6 +5,7 @@ class postfix::config (
   $broken_sasl_auth_clients             = undef,
   $content_filter                       = undef,
   $disable_vrfy_command                 = undef,
+  $home_mailbox                         = undef,
   $import_environment                   = undef,
   $mailbox_size_limit                   = undef,
   $mail_spool_directory                 = undef,
@@ -58,8 +59,11 @@ class postfix::config (
   $maildrop_destination_recipient_limit = undef,
   $dovecot_destination_recipient_limit  = undef,
   $luser_relay                          = undef,
+  $mastercfs                            = {},
 ) {
   include postfix
+
+  create_resources(postfix::config::mastercf, $mastercfs)
 
   postfix::config::maincfhelper { 'luser_relay': value => $luser_relay, }
 
@@ -84,6 +88,8 @@ class postfix::config (
   postfix::config::maincfhelper { 'content_filter': value => $content_filter }
 
   postfix::config::maincfhelper { 'disable_vrfy_command': value => $disable_vrfy_command }
+
+  postfix::config::maincfhelper { 'home_mailbox': value => $home_mailbox }
 
   postfix::config::maincfhelper { 'import_environment': value => $import_environment }
 
