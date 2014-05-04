@@ -113,3 +113,7 @@ Real World Configuration:
 
 
 Well, it does something more. You could reuse this piece of code but you need to have a dovecot running and a database with the correct schema. 
+
+## Contributors
+
+[Andschwa](https://github.com/andschwa)
