@@ -40,6 +40,8 @@ class postfix::config (
   $smtp_tls_CAfile                      = undef,
   $smtp_tls_note_starttls_offer         = undef,
   $smtp_use_tls                         = undef,
+  $soft_bounce                          = undef,
+  $strict_rfc821_envelopes              = undef,
   $tls_random_source                    = undef,
   $transport_maps                       = undef,
   $virtual_transport                    = undef,
@@ -154,6 +156,10 @@ class postfix::config (
   postfix::config::maincfhelper { 'smtp_tls_note_starttls_offer': value => $smtp_tls_note_starttls_offer }
 
   postfix::config::maincfhelper { 'smtp_use_tls': value => $smtp_use_tls }
+
+  postfix::config::maincfhelper { 'soft_bounce': value => $soft_bounce }
+
+  postfix::config::maincfhelper { 'strict_rfc821_envelopes': value => $strict_rfc821_envelopes }
 
   postfix::config::maincfhelper { 'tls_random_source': value => $tls_random_source }
 
