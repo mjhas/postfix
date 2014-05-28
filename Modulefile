@@ -1,5 +1,5 @@
 name    'mjhas/postfix'
-version '0.0.7'
+version '0.0.8'
 source 'https://github.com/mjhas/postfix.git'
 author 'mjhas'
 license 'Apache License 2.0'

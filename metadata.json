@@ -19,7 +19,7 @@
     }
   ],
   "name": "mjhas-postfix",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "author": "mjhas",
   "description": "This Postfix Module installs postfix and configures it using Augeas",
   "dependencies": [],
