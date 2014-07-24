@@ -75,10 +75,13 @@ class postfix::config (
   $dovecot_destination_recipient_limit  = undef,
   $luser_relay                          = undef,
   $mastercfs                            = {},
+  $maincfs                              = {},
 ) {
   include postfix
 
-  create_resources(postfix::config::mastercf, $mastercfs)
+  create_resources(postfix::config::mastercf, hiera_hash('postfix::config::mastercfs', {}))
+
+  create_resources(postfix::config::maincfhelper, hiera_hash('postfix::config::maincfs', {}))
 
   postfix::config::maincfhelper { 'mailbox_transport': value => $mailbox_transport, }
 
