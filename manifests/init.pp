@@ -1,3 +1,15 @@
+# == Class: postfix
+#
+# module to install and configure postfix servers/relays
+# etc.
+#
+# === Parameters
+#
+# === Variables
+#
+# === Authors
+#
+# mjhas@github
 class postfix {
   package { 'postfix':
     ensure  => installed,

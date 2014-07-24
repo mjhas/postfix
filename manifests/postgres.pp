@@ -1,3 +1,14 @@
+# == Class: postfix::postgres
+#
+# Set up postgres backend for postfix
+#
+# === Parameters
+#
+# === Variables
+#
+# === Authors
+#
+# mjhas@github
 class postfix::postgres (
   $dbname     = undef,
   $dbuser     = undef,

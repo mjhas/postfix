@@ -1,6 +1,17 @@
+# == Class: postfix::relay
+#
+# Set up a postfix server as a relay
+#
+# === Parameters
+#
+# === Variables
+#
+# === Authors
+#
+# mjhas@github
 class postfix::relay (
-  $relayhost,
-  $masquerade_domains,
+  $relayhost = undef,
+  $masquerade_domains = $::hostname,
   $sender_hostname = $::fqdn,
 ) {
   include postfix
