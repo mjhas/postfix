@@ -1,9 +1,9 @@
 name    'mjhas/postfix'
-version '0.0.6'
+version '1.0.0'
 source 'https://github.com/mjhas/postfix.git'
 author 'mjhas'
 license 'Apache License 2.0'
-summary ''
+summary 'This Postfix Module installs postfix and configures it using Augeas'
 description 'This Postfix Module installs postfix and configures it using Augeas'
 project_page 'https://github.com/mjhas/postfix'
 
