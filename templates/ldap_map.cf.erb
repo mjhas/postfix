@@ -1,0 +1,15 @@
+# #### Postfix LDAP Map <% @map_name %> ####
+#
+#  THIS FILE IS MANAGED BY PUPPET -- CHANGES WILL BE OVERWRITTEN!
+#
+server_host = <% @server_host %>
+server_port = <% @server_port %>
+version = <% @ldap_version %>
+start_tls = <% @start_tls %>
+tls_ca_cert_file = <% @tls_ca_cert_file %>
+tls_require_cert =  <% @tls_require_cert %>
+
+search_base = <% @search_base %>
+scope = <% @scope %>
+query_filter = <% @query_filter %>
+result_attribute = <% @result_attribute %>
