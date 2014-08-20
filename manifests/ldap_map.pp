@@ -25,6 +25,8 @@ define postfix::ldap_map (
   $result_attribute = 'uid',
 ){
 
+  include postfix::ldap
+
   $valid_scope_names = ['sub', 'base', 'one']
 
   if !member($valid_scope_names, $scope) {
