@@ -10,6 +10,8 @@
 #
 # mjhas@github
 class postfix::config (
+  $mailbox_transport                    = undef,
+  $mailbox_command                      = undef,
   $alias_maps                           = undef,
   $append_dot_mydomain                  = undef,
   $biff                                 = undef,
@@ -77,6 +79,10 @@ class postfix::config (
   include postfix
 
   create_resources(postfix::config::mastercf, $mastercfs)
+
+  postfix::config::maincfhelper { 'mailbox_transport': value => $mailbox_transport, }
+
+  postfix::config::maincfhelper { 'mailbox_command': value => $mailbox_command, }
 
   postfix::config::maincfhelper { 'luser_relay': value => $luser_relay, }
 
