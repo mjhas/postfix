@@ -48,6 +48,7 @@ define postfix::map (
       }
     }
   }
+
   if $ext {
     File[$name] {
       notify => Exec["/usr/sbin/postmap ${type}:${name}"],
