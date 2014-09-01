@@ -50,11 +50,11 @@ define postfix::map (
   }
   if $ext {
     File[$name] {
-      notify => Exec["/usr/sbin/postmap ${type} ${name}"],
+      notify => Exec["/usr/sbin/postmap ${type}:${name}"],
     }
   }
 
-  exec { "/usr/sbin/postmap ${type} ${name}":
+  exec { "/usr/sbin/postmap ${type}:${name}":
     subscribe   => File[$name],
     refreshonly => true,
     creates     => "${name}.${ext}",
