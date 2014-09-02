@@ -41,13 +41,27 @@ define postfix::map (
     File[$name] {
       source => $source,
     }
+  } elsif $content {
+    File[$name] {
+      content => $content,
+    }
   } else {
-    if $content {
-      File[$name] {
-        content => $content,
-      }
+#
+# if neither content nor source of map is given, we expect some local process
+# to set the contents. Lets provide an valid but empty table for now.
+#
+    File[$name] {
+      content => '#
+# Partially Controlled by Puppet!!
+#
+# The attribues of this file will be managed by Puppet, but content will
+# hopefully be controled by some local process, as no valid content was
+# supplied
+#',
+      replace => false,
     }
   }
+
 
   if $ext {
     File[$name] {
