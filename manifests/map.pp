@@ -11,7 +11,7 @@ define postfix::map (
   #
 
   if (! $source) and (!$content) {
-    fail("Either source or contents attribute must be set for type postfix::map")
+    warning("As neither source nor contents attribute are set a dummy content will be created for postfix::map ${name}")
   }
 
   case $type {
