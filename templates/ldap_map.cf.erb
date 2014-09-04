@@ -5,11 +5,27 @@
 server_host = <% @server_host %>
 server_port = <% @server_port %>
 version = <% @ldap_version %>
-start_tls = <% @start_tls %>
+<% if @start_tls -%> 
+start_tls = yes
+<% else -%>  
+start_tls = no
+<% end -%
+<% if @tls_require_cert -%> 
+tls_require_cert = yes
 tls_ca_cert_file = <% @tls_ca_cert_file %>
-tls_require_cert =  <% @tls_require_cert %>
+<% else -%>  
+tls_require_cert = no
+<% end -%
 
 search_base = <% @search_base %>
 scope = <% @scope %>
 query_filter = <% @query_filter %>
 result_attribute = <% @result_attribute %>
+
+<% if @bind -%> 
+bind = yes
+bind_dn = <% @bind_dn %>
+bind_pw = <% @bind_pw %>
+<% else -%>  
+bind = no
+<% end -%

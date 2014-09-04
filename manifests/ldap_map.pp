@@ -16,13 +16,19 @@
 #
 #
 define postfix::ldap_map (
+  $search_base,
   $server_host = 'localhost',
   $server_port = '389',
   $scope = 'sub',
   $ldap_version = '3',
-  $start_tls = 'yes',
+  $start_tls = true,
+  $tls_require_cert = true,
+  $tls_ca_cert_file = undef,
   $query_filter = '(mail=%s)',
   $result_attribute = 'uid',
+  $bind = false,
+  $bind_dn = undef,
+  $bind_pw = undef,
 ){
 
   include postfix::ldap
@@ -33,14 +39,28 @@ define postfix::ldap_map (
     fail("the scope must be one of ${valid_scope_names}")
   }
 
+  validate_bool($bind)
+  validate_bool($start_tls)
+  validate_bool($tls_require_cert)
+
+  $map_name = $name
+
   #
   # template uses:
   #  map_name
   #  server_host
+  #  server_port
   #  ldap_version
   #  start_tls
+  #  search_base
   #  query_filter
+  #  scope
   #  result_attribute
+  #  tls_ca_cert_file
+  #  tls_require_cert
+  #  bind
+  #  bind_dn
+  #  bind_pw
   #
   file{"/etc/postfix/${name}.cf":
     ensure => file,
