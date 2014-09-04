@@ -9,13 +9,13 @@ version = <% @ldap_version %>
 start_tls = yes
 <% else -%>  
 start_tls = no
-<% end -%
+<% end -%>
 <% if @tls_require_cert -%> 
 tls_require_cert = yes
 tls_ca_cert_file = <% @tls_ca_cert_file %>
 <% else -%>  
 tls_require_cert = no
-<% end -%
+<% end -%>
 
 search_base = <% @search_base %>
 scope = <% @scope %>
@@ -28,4 +28,4 @@ bind_dn = <% @bind_dn %>
 bind_pw = <% @bind_pw %>
 <% else -%>  
 bind = no
-<% end -%
+<% end -%>
