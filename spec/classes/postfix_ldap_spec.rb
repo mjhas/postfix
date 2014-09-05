@@ -5,6 +5,6 @@ describe 'postfix::ldap', :type => :class do
   let(:title) { 'foo' }
   
   it 'should install the package' do
-    should contain_package('postfix_ldap')
+    should contain_package('postfix-ldap')
   end
 end
