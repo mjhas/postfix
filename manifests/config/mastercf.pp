@@ -34,7 +34,7 @@ define postfix::config::mastercf (
           "set ${name}/chroot ${chroot}",
           "set ${name}/wakeup ${wakeup}",
           "set ${name}/limit ${limit}",
-          "set ${name}/command ${command}",
+          "set ${name}/command '${command}'",
           ],
       }
     }
