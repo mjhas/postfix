@@ -1,5 +1,5 @@
 #
-#
+#  add ldap support to postfix server
 #
 class postfix::ldap {
   package { 'postfix-ldap':

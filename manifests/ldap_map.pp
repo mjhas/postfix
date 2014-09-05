@@ -1,19 +1,30 @@
 #
 # Define a LDAP map
 #
-# server_host:      Must either be hostname or a valid LDAP URL.
-#                   All LDAP URLs accepted by the OpenLDAP  library  are  supported,
-#                   including  connections  over  UNIX  domain sockets, and LDAP SSL
-#                   (the last one provided that OpenLDAP was compiled  with  support
-#                   for SSL) (Default: localhost)
-# search_base:      dn for search base
-# scope:            depth of search: sub|base|one (Default: sub)
-# query_filter:     Attribute und Werte die den Such-Filter angeben. Dieser
-#                   mu337 die Liste der Ergebnise-Eintr344ge liefern.
-# result_attribute: Attribute die als R374ckgabewert f374r den Lookup genutzt
-#                   werden sollen.
-
-#
+# Parameters:
+# - server_host:      Must either be hostname or a valid LDAP URL.
+#                     All LDAP URLs accepted by the OpenLDAP library are
+#                     supported, including connections over UNIX domain
+#                     sockets, and LDAP SSL (the last one provided that
+#                     OpenLDAP was compiled with support for SSL)
+#                     (Default: localhost)
+# - server_port       Port of the service (Default: 389).
+# - search_base:      dn for search base
+# - scope:            depth of search: sub|base|one (Default: sub)
+# - query_filter:     Search filter expression (Default: '(mail=%s)').
+# - result_attribute: Attribute to be used as return value (Default: 'uid').
+# - ldap_version      LDAP protocol version (Default: 3).
+# - start_tls         Whether to use the Start_SSL command. Must be true or
+#                     false (Default: true),
+# - tls_require_cert  Whether to require a valid certificate to be returned by
+#                     the TLS protocol. Will not be set if start_tls is set to
+#                     false (Default: true).
+# - tls_ca_cert_file  Path to the TLS CA certificate file. Will not be set if
+#                     start_tls is set to false.
+# - bind              Whether to bind prior to searching for entry. Must be
+#                     true or false (Default: false).
+# - bind_dn           DN to bind to. Will not be set if bind is false.
+# - bind_pw           PW to bind with. Will not be set if bind is false.
 #
 define postfix::ldap_map (
   $search_base,
