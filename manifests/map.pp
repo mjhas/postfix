@@ -1,5 +1,28 @@
 #
-# a table used in postfix
+# A lookup table to be used in postfix
+#
+# Parameters:
+# - The $source file to copy the map contents from
+# - The $content of the map
+# - The type of the map. May be one of 'hash', 'btree', 'cdb', 'dbm'. Default
+#   is 'hash', valid values depend on the database libraries installed on the
+#   machine
+#
+# sample usage:
+#    postfix::map { '/etc/aliases':
+#      source => 'puppet:///modules/site/mail.aliases',
+#    }
+#
+#
+# If neither $source nor $content are given, the input file for the map is assumed
+# to be created by some other procces on the target machine.
+# A common use case is to combine this with a metaparameter like this:
+#
+#      postfix::map { '/etc/postfix/external_mailinglists':
+#        subscribe => Exec['/etc/postfix/create_exml.sh'],
+#      }
+#
+# If the input file does not exist yet, it will be created with dummy content.
 #
 define postfix::map (
   $source  = undef,
@@ -11,7 +34,7 @@ define postfix::map (
   #
 
   if (! $source) and (!$content) {
-    warning("As neither source nor contents attribute are set a dummy content will be created for postfix::map ${name}")
+    warning("As neither source nor contents attribute are set a dummy content may be created for postfix::map ${name}")
   }
 
   case $type {
