@@ -2,6 +2,7 @@
 # Define a LDAP map
 #
 # Parameters:
+# - search_base:      dn for search base. This parameter is required!
 # - server_host:      Must either be hostname or a valid LDAP URL.
 #                     All LDAP URLs accepted by the OpenLDAP library are
 #                     supported, including connections over UNIX domain
@@ -9,7 +10,6 @@
 #                     OpenLDAP was compiled with support for SSL)
 #                     (Default: localhost)
 # - server_port       Port of the service (Default: 389).
-# - search_base:      dn for search base
 # - scope:            depth of search: sub|base|one (Default: sub)
 # - query_filter:     Search filter expression (Default: '(mail=%s)').
 # - result_attribute: Attribute to be used as return value (Default: 'uid').
