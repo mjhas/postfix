@@ -74,10 +74,10 @@ define postfix::ldap_map (
   #  bind_pw
   #
   file{"/etc/postfix/${name}.cf":
-    ensure => file,
-    owner => 'root',
-    group => 'root',
-    mode  => 644,
+    ensure  => file,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0644',
     content => template("${module_name}/ldap_map.cf.erb"),
   }
 }
