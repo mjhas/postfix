@@ -9,4 +9,5 @@ RSpec.configure do |c|
   c.manifest_dir = File.expand_path(File.join(__FILE__, '..', 'fixtures/manifests'))
   puts 'manifest_dir:'+c.manifest_dir
   c.augeas_fixtures = File.join(File.dirname(File.expand_path(__FILE__)), 'fixtures', 'augeas')
+  puts 'augeas_fixtures:'+c.augeas_fixtures
 end
