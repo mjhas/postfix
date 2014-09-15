@@ -81,7 +81,7 @@ describe 'postfix::config::mastercf', :type => :define do
     :chroot => 'n',
     :wakeup => '-',
     :limit => '-',
-    :command => 'virtual',
+    :command => 'a_command',
     :options => { 'key1' => 'value1', 'key2' => 'value2', },
   } }
   it 'should have an augeas resource' do
@@ -91,7 +91,7 @@ describe 'postfix::config::mastercf', :type => :define do
     it 'foobar should have proper command line' do
       should execute
 
-      aug_get('foobar/command').should == 'virtual -o key1=value1 key2=value2' 
+      aug_get('foobar/command').should == 'a_command -o key1=value1 key2=value2' 
 
       should execute.idempotently
     end
