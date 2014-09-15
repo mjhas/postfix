@@ -31,7 +31,7 @@ define postfix::config::mastercf (
   $wakeup       = '-',
   $limit        = '-',
   $command      = 'echo',
-  $options      = {},) {
+  $options      = undef,) {
   Augeas {
     context => '/files/etc/postfix/master.cf',
     notify  => Service['postfix'],
@@ -40,11 +40,13 @@ define postfix::config::mastercf (
 
   if is_hash($options) {
     $option_line = join (prefix (join_keys_to_values($options, '='), '-o '), ' ')
-  } else {
+  } elsif is_string($options) {
     warning("parameter options should be a hash of options and values")
     $option_line = $options
+  } else {
+    fail("invalid format for parameter 'options', should be hash, but may be string")
   }
-  $full_command =  "${command} ${option_line}"
+  $full_command =  rstrip("${command} ${option_line}")
 
   case $ensure {
     present : {
