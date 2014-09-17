@@ -4,11 +4,6 @@ describe 'postfix::config::mastercf', :type => :define do
   let(:facts) { {:operatingsystem => 'Debian', :operatingsystemrelease => '7.1'} }
   let(:title) { 'foo' }
   let(:params) { {:ensure => 'present'} }
-  
-  # set loggin to debug, so we can see what the augeas fixtures are doing
-  Puppet::Util::Log.level = :debug
-  Puppet::Util::Log.newdestination(:console)
-  
   it 'should have an augeas resource' do
 	should contain_augeas('postfix master.cf foo')
   end
