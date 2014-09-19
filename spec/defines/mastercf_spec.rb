@@ -91,7 +91,9 @@ describe 'postfix::config::mastercf', :type => :define do
     it 'foobar should have proper command line' do
       should execute
 
-      aug_get('foobar/command').should == 'a_command -o key1=value1 -o key2=value2' 
+      aug_get('foobar/command').should 
+          be_in('a_command -o key1=value1 -o key2=value2',
+                'a_command -o key2=value2 -o key1=value1') 
 
       should execute.idempotently
     end
