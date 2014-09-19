@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PATH=$1
+
 echo -n 'PATH: ' && echo $PATH 
 echo -n 'TRAVIS_BUILD_DIR: ' && echo $TRAVIS_BUILD_DIR  
 
