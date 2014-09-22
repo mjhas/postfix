@@ -41,17 +41,17 @@ describe 'postfix::config::mastercf', :type => :define do
   let(:facts) { {:operatingsystem => 'Debian', :operatingsystemrelease => '7.1'} }
   let(:title) { 'qmgr' }
   let(:params) { {
-	:ensure => 'present',
-	:type => 'unix',
-	:private => '-',
-	:unprivileged => 'n',
-	:chroot => 'n',
-	:wakeup => '-',
-	:limit => '-',
-	:command => 'virtual',
+    :ensure => 'present',
+    :type => 'unix',
+    :private => '-',
+    :unprivileged => 'n',
+    :chroot => 'n',
+    :wakeup => '-',
+    :limit => '-',
+    :command => 'virtual',
   } }
   it 'should have an augeas resource' do
-	should contain_augeas('postfix master.cf qmgr')
+    should contain_augeas('postfix master.cf qmgr')
   end
   describe_augeas 'postfix master.cf qmgr', :lens => 'postfix_master', :target => 'etc/postfix/master.cf' do
     it 'qmgr should stay the same' do
@@ -64,6 +64,36 @@ describe 'postfix::config::mastercf', :type => :define do
       aug_get('qmgr/wakeup').should == '-' 
       aug_get('qmgr/limit').should == '-' 
       aug_get('qmgr/command').should == 'virtual' 
+
+      should execute.idempotently
+    end
+  end
+end
+
+describe 'postfix::config::mastercf', :type => :define do
+  let(:facts) { {:operatingsystem => 'Debian', :operatingsystemrelease => '7.1'} }
+  let(:title) { 'foobar' }
+  let(:params) { {
+    :ensure => 'present',
+    :type => 'unix',
+    :private => '-',
+    :unprivileged => 'n',
+    :chroot => 'n',
+    :wakeup => '-',
+    :limit => '-',
+    :command => 'a_command',
+    :options => { 'key1' => 'value1', 'key2' => 'value2', },
+  } }
+  it 'should have an augeas resource' do
+    should contain_augeas('postfix master.cf foobar')
+  end
+  describe_augeas 'postfix master.cf foobar', :lens => 'postfix_master', :target => 'etc/postfix/master.cf' do
+    it 'foobar should have proper command line' do
+      should execute
+
+      aug_get('foobar/command').should 
+          be_in('a_command -o key1=value1 -o key2=value2',
+                'a_command -o key2=value2 -o key1=value1') 
 
       should execute.idempotently
     end
