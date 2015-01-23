@@ -20,6 +20,7 @@ class postfix::config (
   $disable_vrfy_command                 = undef,
   $home_mailbox                         = undef,
   $import_environment                   = undef,
+  $inet_interfaces                      = undef,
   $mailbox_size_limit                   = undef,
   $mail_spool_directory                 = undef,
   $message_size_limit                   = undef,
@@ -111,6 +112,8 @@ class postfix::config (
   postfix::config::maincfhelper { 'home_mailbox': value => $home_mailbox }
 
   postfix::config::maincfhelper { 'import_environment': value => $import_environment }
+
+  postfix::config::maincfhelper { 'inet_interfaces': value => $inet_interfaces }
 
   postfix::config::maincfhelper { 'mailbox_size_limit': value => $mailbox_size_limit }
 
