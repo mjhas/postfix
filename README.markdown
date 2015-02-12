@@ -64,6 +64,7 @@ Real World Configuration:
       content_filter      => 'amavis:[127.0.0.1]:10024',
       disable_vrfy_command                 => 'yes',
       import_environment  => 'MAIL_CONFIG MAIL_DEBUG MAIL_LOGTAG TZ XAUTHORITY DISPLAY LANG=C RESOLV_MULTI=on',
+      inet_interfaces     => 'all', 
       mail_spool_directory                 => '/var/mail',
       mailbox_size_limit  => '100000000',
       message_size_limit  => '60485760',
