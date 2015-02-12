@@ -29,7 +29,12 @@ class postfix::relay (
 
   postfix::config::maincfhelper { 'myorigin': value => $sender_hostname, }
 
-  postfix::config::maincfhelper { 'mydestination': value => "${sender_hostname}, ${::hostname}, localhost.localdomain, localhost", }
+  if $::fqdn != $sender_hostname {
+    postfix::config::maincfhelper { 'mydestination': value => "${sender_hostname}, ${::fqdn}, ${::hostname}, localhost.localdomain, localhost", }
+  }
+  else {
+    postfix::config::maincfhelper { 'mydestination': value => "${sender_hostname}, ${::hostname}, localhost.localdomain, localhost", }
+  }
 
   postfix::config::maincfhelper { 'relayhost': value => $relayhost, }
 
