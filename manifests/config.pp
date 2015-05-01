@@ -75,6 +75,12 @@ class postfix::config (
   $maildrop_destination_recipient_limit = undef,
   $dovecot_destination_recipient_limit  = undef,
   $luser_relay                          = undef,
+  $relay_domains                        = undef,
+  $relay_transport                      = undef,
+  $inet_protocols                       = undef,
+  $smtp_address_preference              = undef,
+  $masquerade_domains                   = undef,
+  $proxy_interfaces                     = undef,
   $mastercfs                            = {},
 ) {
   include postfix
@@ -210,4 +216,16 @@ class postfix::config (
   postfix::config::maincfhelper { 'virtual_overquota_bounce': value => $virtual_overquota_bounce }
 
   postfix::config::maincfhelper { 'virtual_uid_maps': value => $virtual_uid_maps }
+
+  postfix::config::maincfhelper { 'relay_domains': value => $relay_domains }
+
+  postfix::config::maincfhelper { 'relay_transport': value => $relay_transport }
+
+  postfix::config::maincfhelper { 'inet_protocols': value => $inet_protocols }
+
+  postfix::config::maincfhelper { 'smtp_address_preference': value => $smtp_address_preference }
+
+  postfix::config::maincfhelper { 'masquerade_domains': value => $masquerade_domains }
+
+  postfix::config::maincfhelper { 'proxy_interfaces': value => $proxy_interfaces }
 }
