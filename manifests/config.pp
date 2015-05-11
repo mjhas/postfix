@@ -10,6 +10,7 @@
 #
 # mjhas@github
 class postfix::config (
+  $default_transport                    = undef,
   $mailbox_transport                    = undef,
   $mailbox_command                      = undef,
   $alias_maps                           = undef,
@@ -86,6 +87,8 @@ class postfix::config (
   include postfix
 
   create_resources(postfix::config::mastercf, $mastercfs)
+
+  postfix::config::maincfhelper { 'default_transport': value => $default_transport, }
 
   postfix::config::maincfhelper { 'mailbox_transport': value => $mailbox_transport, }
 
