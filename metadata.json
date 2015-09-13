@@ -29,7 +29,7 @@
   "author": "mjhas",
   "summary": "This Postfix Module installs postfix and configures it using Augeas",
   "dependencies": [
-    {"name":"puppetlabs/stdlib","version_requirement":"4.3.2"}
+    {"name":"puppetlabs/stdlib","version_requirement":">=4.3.2"}
   ],
   "source": "https://github.com/mjhas/postfix.git",
   "project_page": "https://github.com/mjhas/postfix",
