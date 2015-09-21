@@ -95,7 +95,5 @@ define postfix::map (
   exec { "/usr/sbin/postmap ${type}:${name}":
     subscribe   => File[$name],
     refreshonly => true,
-    creates     => "${name}.${ext}",
-    notify      => Service['postfix'],
   }
 }
