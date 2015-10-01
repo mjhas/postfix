@@ -1,0 +1,5 @@
+hosts = <%= @hosts %>
+user = <%= @dbuser %>
+password = <%= @dbpassword %>
+dbname = <%= @dbname %>
+query = SELECT goto FROM alias WHERE address='%s' AND active = 1
