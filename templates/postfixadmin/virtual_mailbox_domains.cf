@@ -1,0 +1,5 @@
+hosts = <%= @hosts %>
+user = <%= @dbuser %>
+password = <%= @dbpassword %>
+dbname = <%= @dbname %>
+query = SELECT domain FROM domain WHERE domain='%s' and backupmx = 0 and active = 1

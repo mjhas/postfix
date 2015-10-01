@@ -1,0 +1,5 @@
+hosts = <%= @hosts %>
+user = <%= @dbuser %>
+password = <%= @dbpassword %>
+dbname = <%= @dbname %>
+query = SELECT maildir FROM mailbox WHERE username='%s' AND active = 1

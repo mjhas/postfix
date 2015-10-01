@@ -45,12 +45,31 @@ It will just install the postfix package and ensure that postfix is running and 
 
 ---------------------------------------
 
+Database Configuration:
+=============
+
+
+    include postfix
+
+    class { 'postfix::database':
+      dbname     => 'dbname',
+      dbpassword => 'dbpassword',
+      dbuser     => 'dbusername',
+      rdbms      => 'mysql',
+      schema     => 'custom',
+    }
+
+
+`rdbms` defaults to 'postgresql' but does support 'mysql' as well.
+
+`schema` defaults to 'custom', historically the first RDBMS schema but it also supports 'postfixadmin', [a web based interface used to manage mailboxes, virtual domains and aliases.](http://postfixadmin.sourceforge.net/)
+
 Real World Configuration:
 =============
 
     include postfix
 
-    class { 'postfix::postgres':
+    class { 'postfix::database':
       dbname     => 'dbname',
       dbpassword => 'dbpassword',
       dbuser     => 'dbusername',
@@ -64,7 +83,7 @@ Real World Configuration:
       content_filter      => 'amavis:[127.0.0.1]:10024',
       disable_vrfy_command                 => 'yes',
       import_environment  => 'MAIL_CONFIG MAIL_DEBUG MAIL_LOGTAG TZ XAUTHORITY DISPLAY LANG=C RESOLV_MULTI=on',
-      inet_interfaces     => 'all', 
+      inet_interfaces     => 'all',
       mail_spool_directory                 => '/var/mail',
       mailbox_size_limit  => '100000000',
       message_size_limit  => '60485760',
@@ -113,9 +132,34 @@ Real World Configuration:
     }
 
 
-Well, it does something more. You could reuse this piece of code but you need to have a dovecot running and a database with the correct schema. 
+Well, it does something more. You could reuse this piece of code but you need to have a dovecot running and a database with the correct schema.
+
+2nd Real World Configuration:
+=============
+
+    include postfix
+
+    $map   = 'pgsql'
+    $rdbms = 'postgresql'
+    class { 'postfix::database':
+      dbname     => 'postfix_mail',
+      dbpassword => 'p0stf1xnol0gimp',
+      dbuser     => 'postfix',
+      rdbms      => $rdbms,
+      schema     => 'custom',
+    }
+
+    class { 'postfix::config':
+      alias_maps          => 'hash:/etc/aliases',
+      append_dot_mydomain => 'no',
+      [..] Skip to relevant lines:
+      transport_maps      => 'proxy:$map:/etc/postfix/$rdbms/virtual_transports.cf',
+      virtual_alias_maps  => 'proxy:$map:/etc/postfix/$rdbms/virtual_forwardings.cf',
+      [..]
+    }
 
 ## Contributors
 
 [Andschwa](https://github.com/andschwa)
 [cpganderton](https://github.com/cpganderton)
+[nerdyness](https://github.com/nerdyness)
