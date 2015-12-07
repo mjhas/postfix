@@ -20,7 +20,7 @@ class postfix::relay (
   $smtp_tls_note_starttls_offer = undef,
   $smtp_tls_security_level = undef,
   $smtp_use_tls = undef,
-  $inet_interfaces = 'loopbback-only',
+  $inet_interfaces = 'loopback-only',
 ) {
   include postfix
 
