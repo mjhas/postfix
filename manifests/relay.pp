@@ -21,6 +21,7 @@ class postfix::relay (
   $smtp_tls_security_level = undef,
   $smtp_use_tls = undef,
   $inet_interfaces = 'loopback-only',
+  $inet_protocols  = 'all',
 ) {
   include postfix
 
