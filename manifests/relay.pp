@@ -56,4 +56,6 @@ class postfix::relay (
   postfix::config::maincfhelper { 'masquerade_domains': value => $masquerade_domains, }
 
   postfix::config::maincfhelper { 'inet_interfaces': value => $inet_interfaces, }
+
+  postfix::config::maincfhelper { 'inet_protocols': value => $inet_protocols, }
 }
