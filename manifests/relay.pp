@@ -20,6 +20,7 @@ class postfix::relay (
   $smtp_tls_note_starttls_offer = undef,
   $smtp_tls_security_level = undef,
   $smtp_use_tls = undef,
+  $transport_maps = undef,
 ) {
   include postfix
 
@@ -54,4 +55,6 @@ class postfix::relay (
   postfix::config::maincfhelper { 'masquerade_domains': value => $masquerade_domains, }
 
   postfix::config::maincfhelper { 'inet_interfaces': value => 'loopback-only', }
+
+  postfix::config::maincfhelper { 'transport_maps': value => $transport_maps }
 }
